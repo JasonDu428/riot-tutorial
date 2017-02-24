@@ -2,6 +2,12 @@
 		<h1>Welcome#index</h1>
 		<p>Find me in app/views/welcome/index.html.erb</p>
 		<hello-world></hello-world>
+		<hello-world greet="bob"></hello-world>
+		<hello-world greet="bob"></hello-world>
+		<hello-world ></hello-world>
+		<hello-form></hello-form>
 		<script>
-			riot.mount('hello-world')
+		// good to set default values
+			riot.mount('hello-world',{greet:"joe"})
+			riot.mount('hello-form')
 		</script>
