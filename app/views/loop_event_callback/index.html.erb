@@ -1,0 +1,25 @@
+<h1>LoopEventCallback#index</h1>
+<p>Find me in app/views/loop_event_callback/index.html.erb</p>
+<contact-list></contact-list>
+<script>
+	// var peeps = [{first:"john", last:"Doe"}, {first:"sally", last:"smith"}]
+	riot.mount('contact-list',{callback:tagCallback})
+
+
+	function tagCallback(theTag){
+		console.log('callback executed')
+		var request = new XMLHttpRequest()
+		request.open('GET','/loop_event_callback/people.json',true)
+		request.onload = function(){
+			if(request.status==200){
+				var data= JSON.parse(request.responseText)
+				theTag.trigger('data_loaded', data.people)
+			}
+		}
+
+		setTimeout(function(){
+			request.send()
+		},2000)
+		
+	}
+</script>

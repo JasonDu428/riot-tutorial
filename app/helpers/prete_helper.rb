@@ -1,0 +1,2 @@
+module PreteHelper
+end
