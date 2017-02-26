@@ -1,6 +1,31 @@
 <h1>Prete#index</h1>
 <p>Find me in app/views/prete/index.html.erb</p>
 <hello-prete title='hello'> </hello-prete>
+<people-list></people-list>
 <script>
-	riot.mount('hello-prete')
+	var params={
+		people: [
+			{name: 'peter'},
+			{name: 'james'},
+			{name: 'Jon'},
+			{name: 'Andrew'}
+		]
+	}
+
+	var params2={
+		people: [
+			{name: 'peter', age:20},
+			{name: 'james', age:35},
+			{name: 'Jon', age:34},
+			{name: 'Andrew', age:243}
+		]
+	}
+
+	riot.mount('hello-prete', params)
+	riot.mount('people-list', params2)
+
+	riot.observable(this)
+	let _setCountStore = (countArray) +> this.trigger('setCountStore', countArray)
+
+	this.on('setCountAction', _setCountStore)
 </script>
